@@ -16,7 +16,7 @@ ENV SERVICE_NAME backend
 
 COPY --chown=node:node ./dist ./
 
-RUN pnpm --version
+RUN ls ./
 RUN pnpm install 
 
 ENV NODE_ENV=production
