@@ -54,7 +54,7 @@ jobs:
         uses: docker/metadata-action@8e5442c4ef9f78752691e2d8f8d19755c6f78e81
         with:
           images: feelgood1987/kultur
-          tags: latest
+          tags: ${{ steps.meta.outputs.tags }}
       # Build and push Docker image with Buildx (don't push on PR)
       # https://github.com/docker/build-push-action
       - name: Build and push Docker image
