@@ -40,11 +40,10 @@ jobs:
 
       # Login against a Docker registry except on PR
       # https://github.com/docker/login-action
-      - name: Login to GitHub Container Registry
+      - name: Login to Docker Container Registry
         if: github.event_name != 'pull_request'
         uses: docker/login-action@v3
         with:
-          image: feelgood1987/kultur
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
 
@@ -54,7 +53,7 @@ jobs:
         id: meta
         uses: docker/metadata-action@8e5442c4ef9f78752691e2d8f8d19755c6f78e81
         with:
-          images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
+          images: feelgood1987/kultur
           tags: |
             type=match,pattern=backend-(.*),group=1
       # Build and push Docker image with Buildx (don't push on PR)
