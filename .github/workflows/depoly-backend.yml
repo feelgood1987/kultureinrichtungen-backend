@@ -3,6 +3,7 @@ name: deploy-backend
 on:
   push:
     tags: ['backend-v*.*.*']
+    branches: [main]
 
 env:
   # Use docker.io for Docker Hub if empty
@@ -43,9 +44,8 @@ jobs:
         if: github.event_name != 'pull_request'
         uses: docker/login-action@v3
         with:
-          registry: ghcr.io
-          username: ${{ github.actor }}
-          password: ${{ secrets.GITHUB_TOKEN }}
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
 
       # Extract metadata (tags, labels) for Docker
       # https://github.com/docker/metadata-action
