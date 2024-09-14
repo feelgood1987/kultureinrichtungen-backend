@@ -16,7 +16,8 @@ ENV SERVICE_NAME backend
 
 COPY --chown=node:node ./dist ./
 
-RUN pnpm install --prod --ignore-scripts
+RUN pnpm --version
+RUN pnpm install 
 
 ENV NODE_ENV=production
 ENV PORT=3000
