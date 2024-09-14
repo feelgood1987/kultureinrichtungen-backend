@@ -14,7 +14,7 @@ ENV SERVICE_BUILDTIME $SERVICE_BUILDTIME
 
 ENV SERVICE_NAME backend
 
-COPY --chown=node:node ./dist/apps/backend-service ./
+COPY --chown=node:node ./dist ./
 
 COPY --chown=node:node ./.npmrc ./
 RUN pnpm install --prod --ignore-scripts
